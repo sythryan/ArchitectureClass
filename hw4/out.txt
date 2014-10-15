@@ -1,0 +1,8 @@
+Script started on Tue 07 Oct 2014 12:08:01 PM CDT
+]0;syth@syth-Gazelle-Professional: ~/Architecture/hw4syth@syth-Gazelle-Professional:~/Architecture/hw4$ ./age
+Enter your name: syth
+Enter your age: 21
+syth your age is 21 
+]0;syth@syth-Gazelle-Professional: ~/Architecture/hw4syth@syth-Gazelle-Professional:~/Architecture/hw4$ exit
+
+Script done on Tue 07 Oct 2014 12:08:11 PM CDT
