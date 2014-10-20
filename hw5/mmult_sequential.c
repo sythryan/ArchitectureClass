@@ -1,4 +1,4 @@
-/*  Programmer:  Syth Ryan : IN PROGRESS
+/*  Programmer:  Syth Ryan
     Partial Programmer:  Mark Fienup
     File:        mmult_sequential.c
     Compiled by: gcc -o mmult mmult_sequential.c
@@ -28,12 +28,12 @@ int main(int argc, char * argv[]) {
   if (argc != 2) {
     printf("usage: %s <integer size of matrix>\n", argv[0]);
     exit(1);
-  } // end if
+  } // end ifs
     
   sscanf(argv[1], "%d", &n);
   
   srand(5);  // initialize random number generator 
-  //  srand((long)time(NULL)); /* initialize rand() */
+  srand((long)time(NULL)); /* initialize rand() */
 
   // dynamically allocate matrices A, B, and C.  
 
@@ -44,15 +44,24 @@ int main(int argc, char * argv[]) {
     A[r] = (double *) malloc(sizeof(double)*n);
   } // end for r
 
+  B = (double **) malloc(sizeof(double *)*n);
+  for (r = 0; r < n; r++) {
+    B[r] = (double *) malloc(sizeof(double)*n);
+  }
+
+  C = (double **) malloc(sizeof(double *)*n);
+  for (r = 0; r < n; r++) {
+    C[r] = (double *) malloc(sizeof(double)*n);
+  }
+
   printf("after allocating matrices\n");
 
   /* initialize array A and B */
-  for( r=0; r<n ; r++ ){
-    for( c=0; c<n ; c++ ){
+  for( r =  0; r < n; r++ ){
+    for( c =  0; c < n; c++ ){
       A[r][c] = rand() / (double) RAND_MAX; 
-      // B[r][c] = rand() / (double) RAND_MAX; 
+      B[r][c] = rand() / (double) RAND_MAX; 
     } // for c
-    //    printf("%d", );
   } // end for r
   
   printf("after initializing matrices\n");
@@ -62,12 +71,18 @@ int main(int argc, char * argv[]) {
   /* Calculate AND time sequential matrix-multiplication results */
   // ADD CODE HERE TO PERFORM C = A X B MATRIX MULTIPLICATION WITH n X n ARRAYS
 
+  for( r = 0; r < n; r++ ) {
+    for( c = 0; c < n; c++ ) {
+      C[r][c] = A[r][c] * B[r][c];
+    }
+  }
+
   time(&endTime);
   seqTime = endTime-startTime;
   printf("Seq time = %ld\n",seqTime);
 
 // FOR DEBUGGING PURPOSES -- CHECK SMALL RESULTS BY HAND
-/*
+
   if (n < 5) { 
 
     printf("A:\n");
@@ -80,7 +95,7 @@ int main(int argc, char * argv[]) {
     printMatrix(C, n, n);
 
   } // end if
-*/
+
 
 } // end main
 
