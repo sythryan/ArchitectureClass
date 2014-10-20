@@ -73,7 +73,9 @@ int main(int argc, char * argv[]) {
 
   for( r = 0; r < n; r++ ) {
     for( c = 0; c < n; c++ ) {
-      C[r][c] = A[r][c] * B[r][c];
+      for( i = 0; i < n; i++ ) {
+        C[r][c] = C[r][c] + A[r][c] * B[c][r];
+      }
     }
   }
 

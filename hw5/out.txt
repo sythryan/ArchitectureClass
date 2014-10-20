@@ -1,0 +1,16 @@
+Script started on Mon 20 Oct 2014 02:52:10 PM CDT
+]0;syth@syth-Gazelle-Professional: ~/ArchitectureClass/hw5syth@syth-Gazelle-Professional:~/ArchitectureClass/hw5$ gcc -o hwFive mmult_sequential.c [20P./hwFive 1000
+after allocating matrices
+after initializing matrices
+Seq time = 7
+]0;syth@syth-Gazelle-Professional: ~/ArchitectureClass/hw5syth@syth-Gazelle-Professional:~/ArchitectureClass/hw5$ ./hwFive 1000[K[K[K[K500
+after allocating matrices
+after initializing matrices
+Seq time = 1
+]0;syth@syth-Gazelle-Professional: ~/ArchitectureClass/hw5syth@syth-Gazelle-Professional:~/ArchitectureClass/hw5$ ./hwFive 500[K[K[K2000
+after allocating matrices
+after initializing matrices
+Seq time = 55
+]0;syth@syth-Gazelle-Professional: ~/ArchitectureClass/hw5syth@syth-Gazelle-Professional:~/ArchitectureClass/hw5$ exit
+
+Script done on Mon 20 Oct 2014 02:53:38 PM CDT
