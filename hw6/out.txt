@@ -1,0 +1,20 @@
+Script started on Wed Nov 19 17:22:49 2014
+[?1034hbash-3.2$ ./hw6 1024 8 0.0001[C[C[C[C[C[C[C[C[C[Cgit push origin master[C[C[C[C[C[C[C[C[C[C[3P./hw6 1024 8 0.0001[C[C[C[C[C[C[C[C[C[C[K./hw6 1024 8 0.0001[1P 0.00011 0.0001
+InitializeData done
+Parallel 2D SOR on 1024 x 1024 using 1 threads: Time = 55.31898 seconds
+maximum difference:  9.998762e-05
+bash-3.2$ ./hw6 1024 1 0.00018[C[C[C[C[C[C[C1[C[C[C[C[C[C[C[C[1P 0.00012 0.0001
+InitializeData done
+Parallel 2D SOR on 1024 x 1024 using 2 threads: Time = 29.76458 seconds
+maximum difference:  9.998762e-05
+bash-3.2$ ./hw6 1024 2 0.0001[1P 0.00014 0.0001
+InitializeData done
+Parallel 2D SOR on 1024 x 1024 using 4 threads: Time = 22.24003 seconds
+maximum difference:  9.998762e-05
+bash-3.2$ ./hw6 1024 4 0.0001[1P 0.00018 0.0001
+InitializeData done
+Parallel 2D SOR on 1024 x 1024 using 8 threads: Time = 23.69149 seconds
+maximum difference:  9.998762e-05
+bash-3.2$ exit
+
+Script done on Wed Nov 19 17:25:54 2014

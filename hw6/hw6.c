@@ -87,8 +87,65 @@ int main(int argc, char * argv[])
 
 void* thread_main(void * arg) {
   long id=(long) arg;
+  double averages;
+  double thisDelta;
+  double **temp;
+  int i,x,y;
+  int load = ((n * n) / t);
+  int leftover = ((n * n ) % t);
 
-  /* YOUR CODE GOES HERE */
+  //deal with leftover work
+  if (id == (t-1)){
+    load += leftover;
+  } 
+  do {
+    barrier(id);
+    if (id == 0) {  
+      //    prepare for next iteration 
+      temp = new; 
+      new = val;
+      val = temp;    
+      deltaNew = 0.0;
+      delta = 0.0;
+    }
+
+    barrier(id);
+    
+    thisDelta = 0.0;
+ 
+    y = (floor((load * id) / n) + 1);
+    x = (((load * id) % n) + 1);
+    
+    for(i = 0; i < load; i++) {
+      averages = ((val[x - 1][y] + val[x][y + 1] + val[x + 1][y] + val[x][y - 1]) / 4);
+      thisDelta = fabs(averages - val[x][y]);
+      new[x][y] = averages;
+      //iterate through work
+      if (x != (n+1) ) {
+        x += 1;
+      }
+      if (x == (n+1)) {
+        y +=1;
+        x = 1;
+      }
+      //find largest delta
+      if (deltaNew < thisDelta) {
+        pthread_mutex_lock(&update_lock);
+        deltaNew = thisDelta;
+        pthread_mutex_unlock(&update_lock);
+      } 
+    }
+    if (deltaNew > delta) {
+      pthread_mutex_lock(&update_lock);
+      delta = deltaNew;
+      pthread_mutex_unlock(&update_lock);
+    }
+
+     // wait for all threads before updating
+    barrier(id);
+
+  }
+  while(delta > threshold);
 
 } // end thread_main
 
