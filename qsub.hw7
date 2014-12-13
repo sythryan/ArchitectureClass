@@ -1,0 +1,13 @@
+#!/bin/bash
+#PBS -N mpi
+#PBS -l nodes=8:ppn=1
+#PBS -l cput=5:00
+##PBS -m be
+#
+echo "-"
+NUMPROC=`wc -l ${PBS_NODEFILE} | awk '{print $1}'`
+#
+# Put the full pathname to the executable below
+# NOTE: YOU NEED TO REPLACE fienup BY YOUR USER NAME 
+time mpiexec -np ${NUMPROC} /home/ryansag/hw7/hw7 1024 0.0001
+
